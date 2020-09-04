@@ -1,0 +1,29 @@
+﻿@*model CouseCatalogueMVC.ViewModels.CourseListVM*@
+@model CourseListVM
+
+   
+    <h1>@Model.SelectedCategoryName</h1>
+    <hr />
+    @foreach(var course in Model.Courses)
+    {
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="@course.ImageUrl" alt="@course.Title">
+    <div class="card-body">
+        <h5 class="card-title">@course.Title</h5>
+        <h6 class="card-subtitle">@course.Category.Name</h6>
+        <p class="card-text">@course.Description</p>
+        <a asp-controller="Course" asp-action="Details"
+           asp-route-id=@course.CourseId class="btn-btn-primary">
+
+            Course Details
+        </a>
+
+        <a asp-controller="ShoppingCart"
+           asp-action="AddToShoppingCart"
+           asp-route-courseId="@course.CourseId"
+           class="btn btn-primary">Add To Cart</a>
+    </div>
+</div>       
+       
+    }
+
